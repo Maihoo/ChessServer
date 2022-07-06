@@ -27,6 +27,15 @@ public class ConnectionManager {
 	public void run() {
 		running = true;
 		
+		try {
+			URL whatismyip = new URL("http://checkip.amazonaws.com");
+			BufferedReader in = new BufferedReader(new InputStreamReader(whatismyip.openStream()));
+			String ip = in.readLine(); //you get the IP as a String
+			System.out.println("started at: " + ip + ":" + PORT);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
 		while (running) {
 			
 			System.out.println("------------------");
